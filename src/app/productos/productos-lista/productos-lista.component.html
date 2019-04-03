@@ -1,0 +1,22 @@
+<h5>{{title}}</h5>
+
+<div *ngIf="!isCarrito" class="d-flex justify-content-around">
+	<h5>Productos seleccionados: {{numeroArticulos}}</h5>
+	<button routerLink="/carrito" type="button" class="btn btn-success" (click)="addCarrito()">Añadir al carrito</button>
+</div>
+
+<app-producto-item
+	*ngFor="let producto of productos"
+	[producto]=producto [isCarrito]=isCarrito
+	(add) = "addProduct($event)"
+	(showDetail) = "showDetailLista($event)">
+</app-producto-item>
+
+<div *ngIf="!isCarrito" class="d-flex justify-content-around">
+	<h5>Productos seleccionados: {{numeroArticulos}}</h5>
+	<button routerLink="/carrito" type="button" class="btn btn-success" (click)="addCarrito()">Añadir al carrito</button>
+</div>
+
+<div *ngIf="isCarrito">
+	<h4>Total: ${{total}}</h4>
+</div>
